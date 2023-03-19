@@ -1,0 +1,233 @@
+import 'package:chatbotflutter/dialoguepage.dart';
+import 'package:chatbotflutter/lmphrasespage.dart';
+import 'package:chatbotflutter/lmverbpage.dart.dart';
+import 'package:chatbotflutter/model/message.dart';
+import 'package:chatbotflutter/openendedpage.dart';
+import 'package:chatbotflutter/provider/messagesprovider.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+import 'package:provider/provider.dart';
+
+void main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => MessagesNotifier(),
+      child: MyApp(),
+    ),
+  );
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Chatbot App',
+      home: Homepage(),
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      onGenerateRoute: (settings) {
+        if (settings.name == '/') {
+          return MaterialPageRoute(builder: (context) => Homepage());
+        }
+      },
+      routes: {
+        '/firstmode': (context) => OpenEndedPage(),
+        '/secondmode': (context) => VerbModePage(),
+        '/thirdmode': (context) => PhraseModePage(),
+        '/fourthmode': (context) => DialoguePage(),
+      },
+    );
+  }
+}
+
+class Homepage extends StatelessWidget {
+  const Homepage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: Color.fromARGB(255, 4, 46, 80),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.emoji_emotions,
+              size: 100,
+              color: Colors.white,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                color: Colors.amberAccent,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Welcome to Malay Chatbot'),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        child: Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  height: 100,
+                                  child:
+                                      Center(child: Text("Mode 1 explaination")),
+                                ),
+                              ),
+                              VerticalDivider(
+                                thickness: 1,
+                                color: Colors.black,
+                              ),
+                              Expanded(
+                                child: Container(
+                                  height: 100,
+                                  child:
+                                      Center(child: Text("Mode 2 explaination")),
+                                ),
+                              ),
+                              VerticalDivider(
+                                thickness: 1,
+                                color: Colors.black,
+                              ),
+                              Expanded(
+                                child: Container(
+                                  height: 100,
+                                  child:
+                                      Center(child: Text("Mode 3 explaination")),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Container(
+                        height: 100,
+                        width: 100,
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                                Colors.lightBlueAccent),
+                          ),
+                          child: Center(
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Text("Open Mode",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 16)),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/firstmode');
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Container(
+                        height: 100,
+                        width: 100,
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                      Colors.greenAccent),
+                                ),
+                                child: Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(2.0),
+                                    child: Text(
+                                      "Verb Mode",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 12),
+                                    ),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/secondmode');
+                                },
+                              ),
+                            ),
+                            Expanded(
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                      Colors.orangeAccent),
+                                ),
+                                child: Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(2.0),
+                                    child: Text(
+                                      "Phrase Mode",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 12),
+                                    ),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/thirdmode');
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Container(
+                        height: 100,
+                        width: 100,
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.purpleAccent),
+                          ),
+                          child: Center(
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Text(
+                                "Dialogue Mode",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 16),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/fourthmode');
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ));
+  }
+}
