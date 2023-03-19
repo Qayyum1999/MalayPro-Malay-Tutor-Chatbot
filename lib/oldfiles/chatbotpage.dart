@@ -51,8 +51,7 @@
 //   }
 
 //   Future<String> _getChatbotResponse(String user_input) async {
-//     String apiKey = "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";
-//     String model = 'text-davinci-003';
+ //     String model = 'text-davinci-003';
 //     String url = 'https://api.openai.com/v1/completions';
 
 //     Map<String, String> headers = {
