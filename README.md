@@ -12,6 +12,6 @@ In open-ended mode, you can ask anything related to malay language. In dialogue 
 
 Try it now and take your Malay language skills to the next level!
 
-![f6388e3c-55ec-4c7e-9863-01864c2c52bc](https://user-images.githubusercontent.com/90374083/226189181-063f0c3e-a407-43f3-90c9-7459dd3b7fcc.jpg)
+## Snapshots Preview
 
 ![f62cf972-e78f-4615-98fc-b26370eaf898](https://user-images.githubusercontent.com/90374083/226189167-65542734-8f7a-434f-a432-6bd848499666.jpg)
