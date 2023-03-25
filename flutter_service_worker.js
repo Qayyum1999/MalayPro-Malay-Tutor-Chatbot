@@ -3,7 +3,12 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "0f82567fc3d6fc14ae8865b4c3cb4ec1",
+  "assets/AssetManifest.json": "8766d24b62783389df358c32554f0191",
+"assets/assets/assets/boyavatar.webp": "07190fc0e7a75c74a122f28e97a896c0",
+"assets/assets/assets/girlavatar.webp": "eaa86b82134444434fc7dd9a308855e2",
+"assets/assets/assets/malayprologo.webp": "4d06c71d37943416cbaad93da7bf9d70",
+"assets/assets/assets/malayprologobg.png": "2197ec9f8176d132d674fcbc6c9f3b23",
+"assets/assets/assets/seraphic-scarab-373811-4f0b6c6072e8.json": "5a69d191ecd1f2c51ddf2dc795e43704",
 "assets/assets/boyavatar.webp": "07190fc0e7a75c74a122f28e97a896c0",
 "assets/assets/girlavatar.webp": "eaa86b82134444434fc7dd9a308855e2",
 "assets/assets/malayprologo.webp": "4d06c71d37943416cbaad93da7bf9d70",
@@ -25,9 +30,9 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "e3c1644cc44b7a64365a8d52e3ac0b7d",
-"/": "e3c1644cc44b7a64365a8d52e3ac0b7d",
-"main.dart.js": "54aa09d8c8a45192377672a9ac295558",
+"index.html": "d29bfe61920a73d01d029470b3ee3e84",
+"/": "d29bfe61920a73d01d029470b3ee3e84",
+"main.dart.js": "7b9afe93da9bed48e2bdc963309264a3",
 "manifest.json": "33b2dce32502b1d97d5a6e95f3c4dc91",
 "splash/img/light-background.png": "2197ec9f8176d132d674fcbc6c9f3b23",
 "splash/splash.js": "123c400b58bea74c1305ca3ac966748d",
