@@ -28,24 +28,20 @@ void main() {
   runApp(
     ChangeNotifierProvider(
       create: (context) => MessagesNotifier(),
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Chatbot App',
-      home: Homepage(),
+      home: const Homepage(),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      onGenerateRoute: (settings) {
-        if (settings.name == '/') {
-          return MaterialPageRoute(builder: (context) => Homepage());
-        }
-      },
       routes: {
         '/firstmode': (context) => OpenEndedPage(),
         '/secondmode': (context) => VerbModePage(),
