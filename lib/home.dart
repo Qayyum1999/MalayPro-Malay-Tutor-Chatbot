@@ -2,11 +2,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:audioplayers/audioplayers.dart';
-import 'package:chatbotflutter/dialoguepage.dart';
-import 'package:chatbotflutter/lmvocabspage.dart';
-import 'package:chatbotflutter/lmverbpage.dart.dart';
-import 'package:chatbotflutter/model/message.dart';
-import 'package:chatbotflutter/openendedpage.dart';
 import 'package:chatbotflutter/provider/messagesprovider.dart';
 import 'package:chatbotflutter/texttospeech/TextToSpeechAPI.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +18,7 @@ import 'package:animated_button/animated_button.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 class Homepage extends StatefulWidget {
-  const Homepage({super.key});
+  const Homepage({Key? key}) : super(key: key);
 
   @override
   State<Homepage> createState() => _HomepageState();
@@ -104,7 +99,7 @@ class _HomepageState extends State<Homepage> {
       ),
       child: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
@@ -113,61 +108,67 @@ class _HomepageState extends State<Homepage> {
               decoration: BoxDecoration(
                 color: Colors.transparent,
               ),
-              child: Positioned(
-                right: 8,
-                left: 8,
-                top: 8,
-                bottom: 8,
-                child: Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: NeumorphicIcon(
-                        Icons.menu,
-                        size: 30,
-                      ),
+              child: Stack(
+                children: [
+                  Positioned(
+                    right: 8,
+                    left: 8,
+                    top: 8,
+                    bottom: 8,
+                    child: Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: NeumorphicIcon(
+                            Icons.menu,
+                            size: 30,
+                          ),
+                        ),
+                        Spacer(),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Image.asset(
+                            'assets/malayprologo.webp',
+                            height: 400,
+                          ),
+                        ),
+                        Spacer(),
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: NeumorphicIcon(
+                            Icons.settings,
+                            size: 30,
+                          ),
+                        ),
+                      ],
                     ),
-                    Spacer(),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Image.asset(
-                        'assets/malayprologo.webp',
-                        height: 400,
-                      ),
-                    ),
-                    Spacer(),
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: NeumorphicIcon(
-                        Icons.settings,
-                        size: 30,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-            CarouselSlider(
-              items: imageSliders,
-              carouselController: _controller,
-              options: CarouselOptions(
-                  autoPlay: false,
-                  enlargeCenterPage: true,
-                  aspectRatio: 2.0,
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      _current = index;
-                      context.read<MessagesNotifier>().selectvoice(
-                            _current == 0
-                                ? "ms-MY-Wavenet-D"
-                                : "ms-MY-Wavenet-C",
-                            _current == 0 ? "MALE" : "FEMALE",
-                            _current == 0 ? "Adam" : "Eve",
-                          );
-                    });
-                    synthesizeText(
-                        "Assalamualaikum, Hi! Saya ${context.read<MessagesNotifier>().avatar}! Selamat berkenalan!");
-                  }),
+            Expanded(
+              child: CarouselSlider(
+                items: imageSliders,
+                carouselController: _controller,
+                options: CarouselOptions(
+                    autoPlay: false,
+                    enlargeCenterPage: true,
+                    aspectRatio: 2.0,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        _current = index;
+                        context.read<MessagesNotifier>().selectvoice(
+                              _current == 0
+                                  ? "ms-MY-Wavenet-D"
+                                  : "ms-MY-Wavenet-C",
+                              _current == 0 ? "MALE" : "FEMALE",
+                              _current == 0 ? "Adam" : "Eve",
+                            );
+                      });
+                      synthesizeText(
+                          "Assalamualaikum, Hi! Saya ${context.read<MessagesNotifier>().avatar}! Selamat berkenalan!");
+                    }),
+              ),
             ),
             AnimatedButton(
               width: 300,
@@ -218,104 +219,103 @@ class _HomepageState extends State<Homepage> {
               //  color: Color(0xffff9333),
             ),
             Expanded(
-              flex: 2,
-              child: CarouselSlider(
-                options: CarouselOptions(
-                  height: 100.0,
-                  aspectRatio: 16 / 9,
-                  viewportFraction: 0.3,
-                  initialPage: 0,
-                  enableInfiniteScroll: true,
-                  reverse: false,
-                  autoPlay: true,
-                  autoPlayInterval: Duration(seconds: 3),
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  enlargeCenterPage: true,
-                  scrollDirection: Axis.vertical,
-                ),
-                items: [1, 2, 3, 4].map((i) {
-                  String _getButtonText(int i) {
-                    switch (i) {
-                      case 1:
-                        return "Open Mode";
-                      case 2:
-                        return "Verb Mode";
-                      case 3:
-                        return "Vocab Mode";
-                      case 4:
-                        return "Dialogue Mode";
+              child: FractionallySizedBox(
+                widthFactor: 0.7, // 90% width of its parent
+                child: CarouselSlider(
+                  options: CarouselOptions(
+                    height: 100.0,
+                    aspectRatio: 16 / 9,
+                    viewportFraction: 0.3,
+                    initialPage: 0,
+                    enableInfiniteScroll: true,
+                    reverse: false,
+                    autoPlay: true,
+                    autoPlayInterval: Duration(seconds: 3),
+                    autoPlayAnimationDuration: Duration(milliseconds: 800),
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    enlargeCenterPage: true,
+                    scrollDirection: Axis.vertical,
+                  ),
+                  items: [1, 2, 3, 4].map((i) {
+                    String _getButtonText(int i) {
+                      switch (i) {
+                        case 1:
+                          return "Open Mode";
+                        case 2:
+                          return "Verb Mode";
+                        case 3:
+                          return "Vocab Mode";
+                        case 4:
+                          return "Dialogue Mode";
 
-                      default:
-                        return "Button";
+                        default:
+                          return "Button";
+                      }
                     }
-                  }
 
-                  String _getButtonRoute(int i) {
-                    switch (i) {
-                      case 1:
-                        return '/firstmode';
-                      case 2:
-                        return '/secondmode';
-                      case 3:
-                        return '/thirdmode';
-                      case 4:
-                        return '/fourthmode';
+                    String _getButtonRoute(int i) {
+                      switch (i) {
+                        case 1:
+                          return '/firstmode';
+                        case 2:
+                          return '/secondmode';
+                        case 3:
+                          return '/thirdmode';
+                        case 4:
+                          return '/fourthmode';
 
-                      default:
-                        return '/';
+                        default:
+                          return '/';
+                      }
                     }
-                  }
 
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: Builder(
-                      builder: (BuildContext context) {
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: NeumorphicButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, _getButtonRoute(i));
-                            },
-                            style: NeumorphicStyle(
-                              shape: NeumorphicShape.concave,
-                              boxShape: NeumorphicBoxShape.roundRect(
-                                  BorderRadius.circular(16)),
-                              depth: 10,
-                              lightSource: LightSource.topLeft,
-                              color: Color.fromARGB(255, 23, 58, 49),
-                              shadowLightColor: Color.fromARGB(255, 43, 99, 83),
-                              shadowDarkColor: Color.fromARGB(255, 9, 22, 19),
-                            ),
-                            child: Container(
-                              height: 60,
-                              width: double.infinity,
-                              child: Center(
-                                child:
-                                    // Text(_getButtonText(i),
-                                    //     style: TextStyle(
-                                    //         color:
-                                    //             Color.fromARGB(255, 9, 22, 19),
-                                    //         fontSize: 16)),
-                                    NeumorphicText(
-                                  _getButtonText(i),
-                                  style: NeumorphicStyle(
-                                    depth: 4, //customize depth here
-                                    color: Colors.white, //customize color here
-                                  ),
-                                  textStyle: NeumorphicTextStyle(
-                                    fontSize: 18, //customize size here
-                                    // AND others usual text style properties (fontFamily, fontWeight, ...)
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      child: Builder(
+                        builder: (BuildContext context) {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: NeumorphicButton(
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                    context, _getButtonRoute(i));
+                              },
+                              style: NeumorphicStyle(
+                                shape: NeumorphicShape.concave,
+                                boxShape: NeumorphicBoxShape.roundRect(
+                                    BorderRadius.circular(16)),
+                                depth: 10,
+                                lightSource: LightSource.topLeft,
+                                color: Color.fromARGB(255, 23, 58, 49),
+                                shadowLightColor:
+                                    Color.fromARGB(255, 43, 99, 83),
+                                shadowDarkColor: Color.fromARGB(255, 9, 22, 19),
+                              ),
+                              child: Container(
+                                height: 60,
+                                width: double.infinity,
+                                child: Center(
+                                  child: NeumorphicText(
+                                    _getButtonText(i),
+                                    style: NeumorphicStyle(
+                                      depth: 4, //customize depth here
+                                      color:
+                                          Colors.white, //customize color here
+                                    ),
+                                    textStyle: NeumorphicTextStyle(
+                                      fontSize: 18, //customize size here
+                                      // AND others usual text style properties (fontFamily, fontWeight, ...)
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        );
-                      },
-                    ),
-                  );
-                }).toList(),
+                          );
+                        },
+                      ),
+                    );
+                  }).toList(),
+                ),
               ),
             ),
           ],
