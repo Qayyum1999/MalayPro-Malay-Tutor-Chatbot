@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "seraphic-scarab-373811",
+  "private_key_id": "4f0b6c6072e8904e5b6f99758d6021d9d1c94f9e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDL4Z850jx9CHh6\nziSvoGPEBJkAYaRxN38reL7KH3kuniOizI1+iC/rZAAJgMPnjXlMyYF2pXJyAQNN\nWVbIwtA1XjJn3nz4gQ23e/+GDATiS2jP6RG17TfN+Snv76ufKCgywdJcsrFJQKOL\nAfmZPC+xPUZL6UqjTRrw6BRl5QHOZ4z+W4opAe3FdxODspi5HLVSL0TLUkXp2D+W\npWUPmKJ7Ud9ulUrQvjeEEZ/ss7nnDk7oRUiQs8Nuw7Yjow9Wj9YqJd2aFngw1uHj\n76Nvn1d0V/7qbqsljX47MMXSovjDCSn63Yy8+27fXDnYdZ/dk72X0Q4IGL4qVZkS\nvhPj1V09AgMBAAECggEAKJo0pwO21yGmOLKv/Kfg5msR+1D2ujNWqJYhzMfqzr1g\nlG3PKek+Pc8K8NmLaiQzCXdByJqXSZvpB/DoRxAA/ffV6viUg7rTu/w+PXhMSrLA\n21Lrm4Lz75mU3/snfwk0xDL0TVCq3M86IpdQmVMynkX5J2n82ruix2I4mbg7HVsH\n5Vh434TGr0/PeGHQKosnqOcaFXJd3hD3qstzbPxAS6klefp1PiIfkiffaBriZ9pe\nIoIE/rFH3mOTBLdQGRQ7//9iq65f1nXOKpN+kdzy9HkakdPEUjafrkGCDTw2LHBb\n05+MeXpOz6xrqJOYx9RapjBARZUKrCK3NMZb0NUwQQKBgQDpe0cIXg4ywNiO8HU0\n5dpInw+5RGb/vxs7tX7/FFYi9nQPqOYlw3HGIq4fjwiKWZ5nisx8b0cGMAoL4w8W\n7cEUyLpR3uynP2rBVs+HJIIxlFXiuJGxIBC4szj7ByIlvvffpXw4OzGyXjPu3t2Z\nYz69Y4aSwbhUZLbA8hHYSlYsIQKBgQDfi4HVorW0hh1rODFskPw4TtajR4QLy5JP\nQNZn2x4lkXNKtEwOpni/jwrzODp/6KtJh2Kffk3nZLrLcbxKtGBN04zHi2ahgiVa\n7TlaBftYgvwd9iFPnrU7/G+NiycAQQdyzH4IvrwgwU/tbthOHyQfIrpfszY/IFcY\n3aX+W+qtnQKBgQDAlT+1Bie981VtKafztvgC2LiWf3ZZ0x86c+1Jp1OZSSHYXN9h\nHMH2xVpMi6VmwJ8pFtKufPbfgrZ2sZYbuoZ9h0gwCam4FlYPHXTWKuX80Ta6aLU7\nnZBNWP9SB8NB0TAR2CULGMBYON2rVUcBo1v3yWUSHhnV+rDHm6PefQpxIQKBgQDY\n8BnfqTeNKVoDY1UTduBOBLRnYE/U4onqP5HS1+I5sx2fsbjdvtAPllGaF0cuOi1/\n/dLH1Vrk4+wi4w1HsiSDYnmMbMv8kMCPrQerRYLWMsdYjDNngS2AOUpIonIG3RTN\nY4YsFm2bm/5k/N0Nc0sqrBkSJmjOeiQMDY25epoUQQKBgQDO+++Lv6SJRUoY/fx5\n9nwq7fnjG7E5sodJqAs1I9yz0G8slZsxs4W1GQgY1Dmt8/M/6Nifiiyyct+AhF+h\nfBOcZ+geietKwr3ipNSow3zE/NhWhxR1FusQJ8ph6ca+Mu4Lv429idfDIIOblXsS\ngo1IdX5rvbBFWRu4JbvmD7t4fw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "malaychatbotflutter@seraphic-scarab-373811.iam.gserviceaccount.com",
+  "client_id": "103103061132708027220",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/malaychatbotflutter%40seraphic-scarab-373811.iam.gserviceaccount.com"
+}
